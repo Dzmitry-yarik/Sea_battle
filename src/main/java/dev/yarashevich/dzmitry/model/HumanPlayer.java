@@ -11,7 +11,7 @@ public class HumanPlayer extends Player {
         setPlayerName();
     }
 
-//    Запрашивает у пользователя координаты для выстрела по вражеской клетке
+    //    Запрашивает у пользователя координаты для выстрела по вражеской клетке
     protected String shot(Player enemy) {
         boolean error = true;
         boolean continueShooting = true;
@@ -57,10 +57,19 @@ public class HumanPlayer extends Player {
             if (shipHit.isSunk()) {
                 incrementStatNbShipShot();
                 System.out.println("Убил!");
+                for (int i = 0; i < enemy.getGameBoard().getShips().length; i++) {
+                    if (!enemy.getGameBoard().getShips()[i].isSunk()) {
+                        continueShooting = true;
+                        System.out.println("Стреляй снова!");
+                        break;
+                    } else {
+                        continueShooting = false;
+                    }
+                }
             } else {
                 System.out.println("Ранил!");
+                System.out.println("Стреляй снова!");
             }
-            System.out.println("Стреляй снова!");
         } else {
             gameBoard.showPlayBoard(this, enemy);
             System.out.println("Мимо!");
@@ -132,7 +141,7 @@ public class HumanPlayer extends Player {
             if (i == Config.getNbShips() - 1) {
                 Helper.cleanConsole();
                 gameBoard.showPersonalBoard();
-                System.out.println(playerName + ", вы разместили все свои корабли. Ваше поле выглядит следующим:");
+                System.out.println(playerName + ", вы разместили все свои корабли.");
                 Helper.sleep(1500);
             }
         }
@@ -156,8 +165,10 @@ public class HumanPlayer extends Player {
         } while (error);
 
         if ("Admin".equals(input)) {
+            System.out.println("Вы вошли как администратор.");
             new Menu().adminMenu();
+        } else {
+            playerName = input;
         }
-        playerName = input;
     }
 }

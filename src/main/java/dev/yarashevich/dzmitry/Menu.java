@@ -94,7 +94,6 @@ public class Menu {
             do {
                 System.out.print("""
                         
-                        Вы вошли как администратор.
                         Выберите пункт меню:
                         1. Показать список сыгранных игр
                         2. Удалить игру по №
@@ -114,21 +113,18 @@ public class Menu {
             switch (ans) {
                 case 1 -> {
                     new Game().printGameRecords();
-                    flag = false;
                 }
                 case 2 -> {
                     try {
                         System.out.println("Введите нормер игры, которую хотите удалить");
                         int numbDel = Integer.parseInt(in.readLine());
                         new AdminMet().deleteGameByNumber(numbDel);
-                        flag = false;
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
                 }
                 case 3 -> {
-                        new Archivator().createArchive();
-                        flag = false;
+                    new Archiver().createArchive();
                 }
                 case 4 -> {
                     showMenu();

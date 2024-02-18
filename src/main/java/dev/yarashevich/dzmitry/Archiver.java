@@ -6,11 +6,11 @@ import java.io.IOException;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
-public class Archivator {
+public class Archiver {
 
     public void createArchive() {
-        String sourceFile = "src\\main\\java\\org\\example\\listGame";
-        String zipFile = "src\\main\\java\\org\\example\\listGame.zip";
+        String sourceFile = "src\\main\\java\\dev\\yarashevich\\dzmitry\\listGame";
+        String zipFile = "src\\main\\java\\dev\\yarashevich\\dzmitry\\listGame.zip";
 
         try {
             FileOutputStream fos = new FileOutputStream(zipFile);

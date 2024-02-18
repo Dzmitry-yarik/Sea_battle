@@ -43,8 +43,14 @@ public class ComputerPlayer extends Player {
                         knownShipCells = new Cell[0];
                         potentialCells = new Cell[0];
                         System.out.println("Убил");
-                        if (!new Game().over()) {
-                            continueShooting = false;
+                        for (int i = 0; i < enemy.getGameBoard().getShips().length; i++) {
+                            if (!enemy.getGameBoard().getShips()[i].isSunk()) {
+                                continueShooting = true;
+                                System.out.println(playerName + " будет стрелять снова");
+                                break;
+                            } else {
+                                continueShooting = false;
+                            }
                         }
                     } else {
                         System.out.println("Ранил");

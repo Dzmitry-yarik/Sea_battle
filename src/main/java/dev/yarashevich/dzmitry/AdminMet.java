@@ -9,7 +9,7 @@ public class AdminMet {
     // удалить игру по №
     public void deleteGameByNumber(int gameNumber) {
         try {
-            File file = new File("src\\main\\java\\org\\example\\listGame");
+            File file = new File("src\\main\\java\\dev\\yarashevich\\dzmitry\\listGame");
             BufferedReader reader = new BufferedReader(new FileReader(file));
             List<String> lines = new ArrayList<>();
             String line;

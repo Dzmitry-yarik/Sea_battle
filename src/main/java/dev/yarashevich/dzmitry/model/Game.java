@@ -65,9 +65,8 @@ public class Game implements Serializable {
             }
             gameNumber++;
         } while (!over());
-
         try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter("src\\main\\java\\org\\example\\listGame", true));
+            BufferedWriter writer = new BufferedWriter(new FileWriter("src\\main\\java\\dev\\yarashevich\\dzmitry\\listGame", true));
             writer.write("Игра №" + gameNumber + ". Между: player1 name = " + player1.getPlayerName() +
                     ", player2 name = " + player2.getPlayerName() + "! " + gameRecord + "\n");
             writer.close();
